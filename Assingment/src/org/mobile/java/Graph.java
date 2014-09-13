@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -25,30 +23,27 @@ import org.jfree.data.xy.XYSeriesCollection;
 public class Graph extends JFrame{
 	
 	
-	public ArrayList<Integer> ar;
+	public ArrayList<Integer> textFeildvalueList;
 	
-	public Graph(ArrayList<Integer> arl){
+	public Graph(ArrayList<Integer> dataList){
 		
 		super("Mobile Usage");
-		this.ar=arl;
-		JPanel p=createPanel();		
-		//p.setPreferredSize(new java.awt.Dimension(500,270));
-		add(p,BorderLayout.CENTER);		
+		this.textFeildvalueList=dataList;
+		JPanel graphPanel=createPanel();				
+		add(graphPanel,BorderLayout.CENTER);		
 		
 	}
 	
 	public ArrayList<Integer> getDataList(){
 		
-		return ar;
+		return textFeildvalueList;
 	}
 	
 	public JPanel createPanel(){//create line chart object
 		
 		String chartTitle = "Mobile Usages";
 		String xAxisLabel="X";
-		String yAxisLabel="Y";	
-		//boolean legend,tooltips,urls;		
-		//ArrayList<Integer> arr2=getDataList();		
+		String yAxisLabel="Y";					
 		XYDataset dataset=createDataSet();
 		//creating XY line chart
 		JFreeChart chart = ChartFactory.createXYLineChart(chartTitle, xAxisLabel, yAxisLabel, dataset, PlotOrientation.VERTICAL,true, true,false);
@@ -67,25 +62,25 @@ public class Graph extends JFrame{
 	public XYDataset createDataSet(){//creates an XY datasets
 		
 		XYSeriesCollection dataset = new XYSeriesCollection();
-		XYSeries series1=new XYSeries("2014");
+		XYSeries xyseries=new XYSeries("2014");
 		
-		 ArrayList<Integer> arr = new ArrayList<Integer>();
-		 ArrayList<Integer> list =getDataList();
-		 arr.add(1);
-		 arr.add(2);
-		 arr.add(3);
+		 ArrayList<Integer> xAxisLabelList = new ArrayList<Integer>();
+		 ArrayList<Integer> yAxisLabelList =getDataList();
+		 xAxisLabelList.add(1);
+		 xAxisLabelList.add(2);
+		 xAxisLabelList.add(3);
 
 		 
-		 Object[] arr3=arr.toArray();
-		 Object[] arr4=list.toArray();			
+		 Object[] xAxisLabel=xAxisLabelList.toArray();
+		 Object[] yAxisLabel=yAxisLabelList.toArray();			
 		 
-		 for(int i=0;i<arr.size();i++){
+		 for(int i=0;i<xAxisLabelList.size();i++){
 		
-			series1.add((Integer)arr3[i],(Integer)arr4[i]);
+			 xyseries.add((Integer)xAxisLabel[i],(Integer)yAxisLabel[i]);
 			
 		 }
 		 
-		dataset.addSeries(series1);
+		dataset.addSeries(xyseries);
 		return dataset;
 	}
 
