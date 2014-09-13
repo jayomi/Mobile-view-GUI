@@ -37,7 +37,7 @@ public class Graph extends JFrame{
 		
 	}
 	
-	public ArrayList<Integer> alist(){
+	public ArrayList<Integer> getDataList(){
 		
 		return ar;
 	}
@@ -48,7 +48,7 @@ public class Graph extends JFrame{
 		String xAxisLabel="X";
 		String yAxisLabel="Y";	
 		//boolean legend,tooltips,urls;		
-		//ArrayList<Integer> arr2=alist();		
+		//ArrayList<Integer> arr2=getDataList();		
 		XYDataset dataset=createDataSet();
 		//creating XY line chart
 		JFreeChart chart = ChartFactory.createXYLineChart(chartTitle, xAxisLabel, yAxisLabel, dataset, PlotOrientation.VERTICAL,true, true,false);
@@ -70,7 +70,7 @@ public class Graph extends JFrame{
 		XYSeries series1=new XYSeries("2014");
 		
 		 ArrayList<Integer> arr = new ArrayList<Integer>();
-		 ArrayList<Integer> list =alist();
+		 ArrayList<Integer> list =getDataList();
 		 arr.add(1);
 		 arr.add(2);
 		 arr.add(3);
