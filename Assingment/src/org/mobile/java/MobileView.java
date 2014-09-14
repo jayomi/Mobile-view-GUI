@@ -15,8 +15,7 @@ import javax.swing.JTextField;
 public class MobileView extends JFrame implements ActionListener{
 	
 	private JFrame mainFrame;
-	private JPanel labelPanel;
-	
+	private JPanel labelPanel;	
 	private JButton sendButton;	
 	private JLabel mobitelLabel,dialogLabel,hutchLabel,lbl4; 
 	private JTextField mobitelTextFeild,dialogTextFeild,hutchTextFeild;
@@ -36,9 +35,12 @@ public class MobileView extends JFrame implements ActionListener{
 		mainFrame = new JFrame("Mobile Users");		
 		mainFrame.setLayout(new FlowLayout());		
 		
-		mobitelLabel = new JLabel("Mobitel:");mobitelLabel.setBounds(100, 50, 50, 50);mobitelLabel.setBackground(Color.BLUE);
+		mobitelLabel = new JLabel("Mobitel:");	
 		dialogLabel = new JLabel("Dialog:");
 		hutchLabel = new JLabel("Hutch:");
+		
+		mobitelLabel.setBounds(100, 50, 50, 50);
+		mobitelLabel.setBackground(Color.BLUE);
 		
 		mobitelTextFeild = new JTextField(15);
 		dialogTextFeild = new JTextField(15);
