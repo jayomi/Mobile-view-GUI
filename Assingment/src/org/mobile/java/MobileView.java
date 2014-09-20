@@ -2,6 +2,7 @@ package org.mobile.java;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -15,9 +16,10 @@ import javax.swing.JTextField;
 public class MobileView extends JFrame implements ActionListener{
 	
 	private JFrame mainFrame;
-	private JPanel labelPanel;	
+	private JPanel labelPanel;
+	
 	private JButton sendButton;	
-	private JLabel mobitelLabel,dialogLabel,hutchLabel,lbl4; 
+	private JLabel mobitelLabel,dialogLabel,hutchLabel,headerLabel; 
 	private JTextField mobitelTextFeild,dialogTextFeild,hutchTextFeild;
 	private ArrayList dataList;	
 	private int mobitelText;
@@ -33,29 +35,43 @@ public class MobileView extends JFrame implements ActionListener{
 	private void prepareGUI(){		
 		
 		mainFrame = new JFrame("Mobile Users");		
-		mainFrame.setLayout(new FlowLayout());		
+		mainFrame.setLayout(new GridLayout(2,1));	
+		headerLabel = new JLabel("Mobile Usage of 2014",JLabel.CENTER);
+		headerLabel.setSize(50,150);
+		headerLabel.setBackground(Color.lightGray);		
 		
-		mobitelLabel = new JLabel("Mobitel:");	
+		labelPanel=new JPanel();
+		labelPanel.setLayout(new FlowLayout());
+		labelPanel.setBackground(Color.ORANGE);
+		labelPanel.setSize(200,350);			
+		
+		mobitelLabel = new JLabel("Mobitel:");//mobitelLabel.setBounds(100, 50, 50, 50);mobitelLabel.setBackground(Color.BLUE);
 		dialogLabel = new JLabel("Dialog:");
 		hutchLabel = new JLabel("Hutch:");
 		
-		mobitelLabel.setBounds(100, 50, 50, 50);
-		mobitelLabel.setBackground(Color.BLUE);
+		mobitelLabel.setSize(150, 50);
+		dialogLabel.setSize(150, 50);
+		hutchLabel.setSize(150, 50);
 		
 		mobitelTextFeild = new JTextField(15);
 		dialogTextFeild = new JTextField(15);
 		hutchTextFeild = new JTextField(15);
 		
 		sendButton = new JButton("send");
+		sendButton.setSize(100,50);
+		
 		sendButton.setActionCommand("show");
 		sendButton.addActionListener(this);
 		
-		mainFrame.add(mobitelLabel);mainFrame.add(mobitelTextFeild);
-		mainFrame.add(dialogLabel);mainFrame.add(dialogTextFeild);
-		mainFrame.add(hutchLabel);mainFrame.add(hutchTextFeild);	
+		labelPanel.add(mobitelLabel);labelPanel.add(mobitelTextFeild);
+		labelPanel.add(dialogLabel);labelPanel.add(dialogTextFeild);
+		labelPanel.add(hutchLabel);labelPanel.add(hutchTextFeild);	
+		labelPanel.add(sendButton);	
 		
-		mainFrame.add(sendButton);	
+		mainFrame.add(headerLabel);
+		mainFrame.add(labelPanel);		
 		mainFrame.setSize(250,300);
+		mainFrame.setLocation(500, 200);
 		mainFrame.setVisible(true);
 	}
 	
